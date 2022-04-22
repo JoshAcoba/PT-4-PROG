@@ -1,0 +1,106 @@
+//Name: Josh Martin Acoba
+//Acvitity: PT 4 
+//Date: 04/22/22
+//Yr&Section: BSIE 1-1
+
+#include <iostream> 
+using namespace std;
+
+const int size = 100;
+
+void search(int enter[], int n); void ascending(int enter[], int n);
+void descending(int enter[], int n); int main() {
+	int ch, n, enter[100];
+
+	cout << "Enter numbers of array: " << endl; cin >> n;
+
+	cout << "Enter number elements of array: " << endl; for (int i = 0; i < n; i++)
+	{
+		cin >> enter[i];
+	}
+
+	do {
+		system("cls"); cout << endl;
+		cout << "*****************************" << endl; cout << "	Array Program	" << endl; cout << "*****************************" << endl; cout << "[1] Searching Array" << endl; cout << "[2] Sorting Array Ascending" << endl; cout << "[3] Sorting Array Descending" << endl; cout << "[0] Exit the Program" << endl; cout << "Select : ";
+		cin >> ch;
+
+
+
+		switch (ch) {
+		case 1: {
+
+			search(enter, n); system("pause"); break;
+		}
+		case 2: {
+
+			ascending(enter, n); system("pause"); break;
+		}
+		case 3: {
+
+			descending(enter, n); system("pause"); break;
+		}
+		case 0: {
+			cout << "\nThank you for using!" << endl; system("pause");
+			return 0;
+		}
+		default: {
+			cout << "Invalid Input..." << endl; system("pause");
+			break;
+		}
+		}
+	} while (true);
+}
+void search(int enter[], int n) {
+	int k, ans = -1;
+	cout << "Enter element of Array: " << endl; cin >> k;
+	for (int i = 0; i < n; i++)
+	{
+		if (enter[i] == k)
+		{
+			ans = i; break;
+
+
+		}
+	}
+	if (ans != -1)
+		cout << "This element " << k << " exist " << ans; else
+		cout << "This element " << k << " does not exist ";
+}
+void ascending(int enter[], int n) {
+	int a, b, temp;
+	for (b = 0; b < n; b++)
+	{
+		for (a = b + 1; a < n; a++)
+		{
+			if (enter[a] < enter[b])
+			{
+				temp = enter[b]; enter[b] = enter[a]; enter[a] = temp;
+			}
+		}
+	}
+	cout << "Array in Ascending order :" << endl; for (b = 0; b < n; b++)
+	{
+		cout << enter[b] << endl;
+	}
+}
+void descending(int enter[], int n) {
+
+	int k, z, temp;
+	for (z = 0; z < n; ++z)
+	{
+		for (k = z + 1; k < n; ++k)
+		{
+			if (enter[z] < enter[k])
+			{
+				temp = enter[z]; enter[z] = enter[k]; enter[k] = temp;
+			}
+		}
+	}
+	cout << "\n Array in Descending Order: \n";
+
+
+	for (z = 0; z < n; ++z)
+	{
+		cout << " "; cout << enter[z]; cout << "\n";
+	}
+}
